@@ -9,12 +9,13 @@ export class Products {
                 readonly description: Description,
                 readonly price: Price,
                 readonly category: string,
-                readonly ownerId: string) {
+                readonly owner_id: string,
+                readonly product_id: string) {
     }
 
     static async create(product: ProductType) {
         return new Products(new Title(product.title), new Description(product.description),
-            new Price(product.price), product.category, product.ownerId);
+            new Price(product.price), product.category, product.owner_id, product.product_id);
     }
 
 }

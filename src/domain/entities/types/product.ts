@@ -3,5 +3,6 @@ export type ProductType = {
     description: string,
     price: number,
     category: string,
-    ownerId: string
+    owner_id: string
+    product_id: string
 }
