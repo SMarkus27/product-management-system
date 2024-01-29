@@ -1,7 +1,7 @@
 import {Response} from "express";
 import {v4 as uuid4} from "uuid";
 
-import {ProductRepository} from "@root/src/infra/repository/products/repository";
+import {ProductRepository} from "@root/src/infra/repository/product";
 import {ProductType} from "@domain/entities/types/product";
 import {Products} from "@domain/entities/products";
 

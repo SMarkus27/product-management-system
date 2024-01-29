@@ -1,5 +1,5 @@
 import {Response} from "express";
-import {ProductRepository} from "@root/src/infra/repository/products/repository";
+import {ProductRepository} from "@root/src/infra/repository/product";
 
 
 export class DeleteProduct {

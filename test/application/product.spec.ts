@@ -1,7 +1,7 @@
 import request from "supertest";
-import {app} from "../../../src/main";
+import {app} from "../../src/main";
 import mongoose, {connect} from "mongoose";
-import {ProductRepository} from "../../../src/infra/repository/products/repository";
+import {ProductRepository} from "../../src/infra/repository/product";
 
 describe("Should create a product",  () => {
 
@@ -26,7 +26,7 @@ describe("Should create a product",  () => {
             title: "products 1",
             description: "new products",
             price: 20.55,
-            category: "new category",
+            category: "new categories",
             owner_id: "123",
             product_id: "456"
         };
@@ -41,7 +41,7 @@ describe("Should create a product",  () => {
             title: "products 1",
             description: "new products",
             price: 20.55,
-            category: "new category",
+            category: "new categories",
             owner_id: "123",
             product_id: "456"
         };
@@ -60,7 +60,7 @@ describe("Should create a product",  () => {
             title: "products 1",
             description: "new products",
             price: 20.55,
-            category: "new category",
+            category: "new categories",
             owner_id: "123",
             product_id: "456"
         };
@@ -88,7 +88,7 @@ describe("Should create a product",  () => {
             title: "products 1",
             description: "new products",
             price: 20.55,
-            category: "new category",
+            category: "new categories",
             owner_id: "123",
             product_id: "456"
         };

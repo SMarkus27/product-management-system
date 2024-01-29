@@ -1,7 +1,7 @@
 import { ProductType } from "@domain/entities/types/product";
-import {IProductRepository} from "../../../../src/application/interfaces/repositories/products/interface";
-import {MongoDBInfrastructure} from "../../database/mongodb/database";
-import {ProductModel} from "../../database/mongodb/model/product";
+import {IProductRepository} from "../../application/interfaces/repositories/product";
+import {MongoDBInfrastructure} from "../database/mongodb/database";
+import {ProductModel} from "../database/mongodb/model/product";
 import {UpdateWriteOpResult} from "mongoose";
 
 export class ProductRepository implements IProductRepository {

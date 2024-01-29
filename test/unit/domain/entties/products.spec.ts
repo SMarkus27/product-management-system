@@ -8,16 +8,16 @@ describe("Product Entity tests", () => {
             title: "products 1",
             description: "new products",
             price: 20.55,
-            category: "new category",
+            category: "new categories",
             owner_id: "123",
             product_id: "456"
         };
 
         const newProduct = await Products.create(product);
-        expect(newProduct.title.getValue()).toEqual("products 1");
-        expect(newProduct.description.getValue()).toEqual("new products");
-        expect(newProduct.price.getValue()).toEqual(20.55);
-        expect(newProduct.category).toEqual("new category");
+        expect(newProduct.title).toEqual("products 1");
+        expect(newProduct.description).toEqual("new products");
+        expect(newProduct.price).toEqual(20.55);
+        expect(newProduct.category).toEqual("new categories");
         expect(newProduct.owner_id).toEqual("123");
         expect(newProduct.product_id).toEqual("456");
 
@@ -28,7 +28,7 @@ describe("Product Entity tests", () => {
             title: "prod",
             description: "new products",
             price: 20.55,
-            category: "new category",
+            category: "new categories",
             owner_id: "123",
             product_id: "456"
 
@@ -41,7 +41,7 @@ describe("Product Entity tests", () => {
             title: "products 1",
             description: "new",
             price: 20.55,
-            category: "new category",
+            category: "new categories",
             owner_id: "123",
             product_id: "456"
 
@@ -55,7 +55,7 @@ describe("Product Entity tests", () => {
             title: "products 1",
             description: "new products",
             price: -1,
-            category: "new category",
+            category: "new categories",
             owner_id: "123",
             product_id: "456"
 
