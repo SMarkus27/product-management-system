@@ -1,6 +1,6 @@
 import {connect, model, Schema} from "mongoose";
-import {ProductModel} from "../../../../../src/infra/database/mongodb/model/product";
-import {ProductRepository} from "../../../../../src/infra/repository/products/repository";
+import {ProductModel} from "../../../../src/infra/database/mongodb/model/product";
+import {ProductRepository} from "../../../../src/infra/repository/product";
 
 
 describe("Product Repository test", () => {
@@ -21,7 +21,7 @@ describe("Product Repository test", () => {
             title: "products 1",
             description: "new products",
             price: 20.55,
-            category: "new category",
+            category: "new categories",
             owner_id: "123",
             product_id: "456"
         };
@@ -39,7 +39,7 @@ describe("Product Repository test", () => {
             title: "products 1",
             description: "new products",
             price: 20.55,
-            category: "new category",
+            category: "new categories",
             owner_id: "123",
             product_id: "456"
         };
@@ -48,7 +48,7 @@ describe("Product Repository test", () => {
             title: "products 1",
             description: "new products",
             price: 20.55,
-            category: "new category 2",
+            category: "new categories 2",
             owner_id: "123",
             product_id: "456"
         };
@@ -68,7 +68,7 @@ describe("Product Repository test", () => {
             title: "products 1",
             description: "new products",
             price: 20.55,
-            category: "new category",
+            category: "new categories",
             owner_id: "123",
             product_id: "456"
         };
@@ -77,7 +77,7 @@ describe("Product Repository test", () => {
             title: "products 2",
             description: "new products",
             price: 30.55,
-            category: "new category 2",
+            category: "new categories 2",
             owner_id: "123",
             product_id: "789"
         };

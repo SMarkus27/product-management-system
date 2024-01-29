@@ -1,5 +1,5 @@
 import express from "express"
-import {ProductController} from "@controllers/products/controller";
+import {ProductController} from "@controllers/product";
 
 const router = express.Router();
 
@@ -9,5 +9,6 @@ router.route("/product")
 router.route("/product/:id")
     .put(ProductController.updateProduct)
     .delete(ProductController.deleteProduct);
+
 
 module.exports = router;

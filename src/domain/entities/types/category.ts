@@ -1,5 +1,6 @@
 export type CategoryType = {
     title: string,
     description: string,
-    ownerId: string
+    owner_id: string,
+    category_id: string
 }

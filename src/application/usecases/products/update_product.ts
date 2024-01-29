@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import {ProductRepository} from "@root/src/infra/repository/products/repository";
+import {ProductRepository} from "@root/src/infra/repository/product";
 import {Products} from "@domain/entities/products";
 
 export class UpdateProduct {
@@ -10,9 +10,9 @@ export class UpdateProduct {
         const productId = request.params.id;
         product.product_id = productId;
 
-        await Products.create(product);
+        const validProduct = await Products.create(product);
 
-        const updateResult = await this.productRepository.update(productId, product);
+        const updateResult = await this.productRepository.update(productId, validProduct);
         if (updateResult.modifiedCount > 0) {
             return response.status(200).json({
                 success: true,

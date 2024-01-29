@@ -1,8 +1,9 @@
 import {Response} from "express";
-import {ProductRepository} from "@root/src/infra/repository/products/repository";
+import {v4 as uuid4} from "uuid";
+
+import {ProductRepository} from "@root/src/infra/repository/product";
 import {ProductType} from "@domain/entities/types/product";
 import {Products} from "@domain/entities/products";
-import {v4 as uuid4} from "uuid";
 
 export class CreateProduct {
     constructor(readonly productRepository: ProductRepository) {
@@ -19,8 +20,8 @@ export class CreateProduct {
             })
         }
 
-        await Products.create(product);
-        await this.productRepository.create(product);
+        const validProduct = await Products.create(product);
+        await this.productRepository.create(validProduct);
         return response.status(200).json({
             success: true,
             message: "Product created",

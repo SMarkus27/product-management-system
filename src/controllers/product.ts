@@ -1,8 +1,8 @@
 import {Request, Response} from "express";
-import {ProductRepository} from "../../infra/repository/products/repository";
-import {CreateProduct} from "../../application/usecases/products/create_product";
-import {UpdateProduct} from "../../application/usecases/products/update_product";
-import {DeleteProduct} from "../../application/usecases/products/delete_product";
+import {ProductRepository} from "../infra/repository/product";
+import {CreateProduct} from "../application/usecases/products/create_product";
+import {UpdateProduct} from "../application/usecases/products/update_product";
+import {DeleteProduct} from "../application/usecases/products/delete_product";
 
 export class ProductController {
 
