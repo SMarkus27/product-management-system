@@ -3,12 +3,14 @@ import {ProductRepository} from "../infra/repository/product";
 import {CreateProduct} from "../application/usecases/products/create_product";
 import {UpdateProduct} from "../application/usecases/products/update_product";
 import {DeleteProduct} from "../application/usecases/products/delete_product";
+import {CategoryRepository} from "@root/src/infra/repository/category";
 
 export class ProductController {
 
     static async create(request: Request, response: Response): Promise<Response> {
         const productRepository = new ProductRepository();
-        const createProduct = new CreateProduct(productRepository);
+        const categoryRepository = new CategoryRepository();
+        const createProduct = new CreateProduct(productRepository, categoryRepository);
         const productBody = request.body;
         return createProduct.execute(productBody, response)
     }

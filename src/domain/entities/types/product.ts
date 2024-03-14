@@ -4,5 +4,4 @@ export type ProductType = {
     price: number,
     category: string,
     owner_id: string
-    product_id: string
 }
