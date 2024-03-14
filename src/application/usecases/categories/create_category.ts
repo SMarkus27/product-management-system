@@ -10,9 +10,10 @@ export class CreateCategory {
     constructor(readonly categoryRepository: CategoryRepository) {}
 
     async execute(category: CategoryType, response: Response): Promise<Response> {
-        const categoryId = uuid4();
-        category.category_id = categoryId;
-        const categoryExist = await this.categoryRepository.getOne(categoryId);
+        const validCategory = await Category.create(category);
+
+        const title = validCategory.title.toLowerCase();
+        const categoryExist = await this.categoryRepository.getOne(title);
         if (categoryExist) {
             return response.status(200).json({
                 success: true,
@@ -20,7 +21,6 @@ export class CreateCategory {
             })
         }
 
-        const validCategory = await Category.create(category);
         await this.categoryRepository.create(validCategory);
         return response.status(200).json({
             success: true,
