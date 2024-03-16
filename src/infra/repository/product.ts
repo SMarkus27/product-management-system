@@ -19,21 +19,21 @@ export class ProductRepository implements IProductRepository {
     }
     async update(productId: string, product: ProductType): Promise<UpdateWriteOpResult> {
         await this.mongoClient;
-        const updateResult = await ProductModel.updateOne({product_id: productId}, {...product})
+        const updateResult = await ProductModel.updateOne({_id: productId}, {...product})
         return updateResult
     }
 
-    async getOne(productId: string): Promise<ProductType> {
+    async getOne(filter: object): Promise<ProductType> {
         await this.mongoClient;
-        return ProductModel.findOne({product_id: productId});
+        return ProductModel.findOne(filter);
     }
-    async getAll(ownerId: string): Promise<ProductType[]> {
+    async getAll(): Promise<ProductType[]> {
         await this.mongoClient;
-        return ProductModel.find({owner_id: ownerId});
+        return ProductModel.find();
     }
     async delete(productId: string): Promise<void> {
         await this.mongoClient;
-        await ProductModel.deleteOne({product_id: productId})
+        await ProductModel.deleteOne({_id: productId})
     }
 
 

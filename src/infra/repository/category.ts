@@ -18,16 +18,20 @@ export class CategoryRepository implements ICategoryRepository {
     }
     async update(categoryId: string, category: CategoryType): Promise<UpdateWriteOpResult> {
         await this.mongoClient;
-        const updateResult = await CategoryModel.updateOne({category_id: categoryId}, {...category})
+        const updateResult = await CategoryModel.updateOne({_id: categoryId}, {...category})
         return updateResult
     }
-    async getOne(categoryId: string): Promise<CategoryType> {
+    async getOne(filter: object): Promise<CategoryType> {
         await this.mongoClient;
-        return CategoryModel.findOne({category_id: categoryId});
+        return CategoryModel.findOne(filter);
+    }
+    async getAll(): Promise<CategoryType[]> {
+        await this.mongoClient;
+        return CategoryModel.find();
     }
     async delete(categoryId: string): Promise<void> {
         await this.mongoClient;
-        await CategoryModel.deleteOne({category_id: categoryId})
+        await CategoryModel.deleteOne({_id: categoryId})
 
     }
 

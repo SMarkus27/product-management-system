@@ -1,14 +1,13 @@
 import express from "express"
 import {ProductController} from "@controllers/product";
 
-const router = express.Router();
+export const productRouter = express.Router();
 
-router.route("/product")
+productRouter.route("/product")
     .post(ProductController.create)
 
-router.route("/product/:id")
+productRouter.route("/product/:id")
     .put(ProductController.updateProduct)
     .delete(ProductController.deleteProduct);
 
 
-module.exports = router;

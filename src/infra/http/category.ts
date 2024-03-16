@@ -1,13 +1,12 @@
 import express from "express"
 import {CategoryController} from "@controllers/category";
 
-const router = express.Router();
+export const categoryRouter = express.Router();
 
-router.route("/category")
+categoryRouter.route("/category")
     .post(CategoryController.create)
 
-router.route("/category/:id")
+categoryRouter.route("/category/:id")
     .put(CategoryController.updateCategory)
     .delete(CategoryController.deleteCategory);
 
-module.exports = router;

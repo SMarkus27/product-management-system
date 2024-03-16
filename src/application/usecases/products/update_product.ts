@@ -8,9 +8,17 @@ export class UpdateProduct {
     async execute(request: Request, response: Response): Promise<Response> {
         const product = request.body;
         const productId = request.params.id;
-        product.product_id = productId;
+
 
         const validProduct = await Products.create(product);
+        const productResult = await this.productRepository.getOne({_id: productId})
+
+        if (!productResult) {
+            return response.status(404).json({
+                success: true,
+                message: "Product not found",
+            })
+        }
 
         const updateResult = await this.productRepository.update(productId, validProduct);
         if (updateResult.modifiedCount > 0) {

@@ -9,10 +9,17 @@ export class UpdateCategory {
     async execute(request: Request, response: Response): Promise<Response> {
         const category = request.body;
         const categoryId = request.params.id;
-        category.category_id = categoryId;
 
         const validCategory = await Category.create(category);
 
+        const categoryResult = await this.categoryRepository.getOne({title: category.title})
+
+        if (!categoryResult) {
+            return response.status(404).json({
+                success: true,
+                message: "Category not found",
+            })
+        }
 
         const updateResult = await this.categoryRepository.update(categoryId, validCategory);
         if (updateResult.modifiedCount > 0) {
