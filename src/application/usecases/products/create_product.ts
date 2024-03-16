@@ -14,7 +14,7 @@ export class CreateProduct {
         const validProduct = await Products.create(product);
 
         const category = validProduct.category.toLowerCase()
-        const categoryResult = await this.categoryRepository.getOne(category);
+        const categoryResult = await this.categoryRepository.getOne({title: category});
 
         if (!categoryResult) {
             return response.status(404).json({

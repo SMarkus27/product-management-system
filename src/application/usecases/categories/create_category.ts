@@ -13,7 +13,7 @@ export class CreateCategory {
         const validCategory = await Category.create(category);
 
         const title = validCategory.title.toLowerCase();
-        const categoryExist = await this.categoryRepository.getOne(title);
+        const categoryExist = await this.categoryRepository.getOne({title: title});
         if (categoryExist) {
             return response.status(200).json({
                 success: true,
