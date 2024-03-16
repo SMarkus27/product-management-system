@@ -1,14 +1,18 @@
 import { connect } from "mongoose";
 import * as mongoose from "mongoose";
 
+import { config } from "dotenv";
+import * as process from "process";
+config()
+
 export class MongoDBInfrastructure  {
 
     async getClient(): Promise<mongoose.Mongoose>{
         try {
             const mongoClient = await connect(
-                "mongodb://localhost:27017",
+                process.env.MONGODB_STRING_CONNECTION,
                 {
-                    dbName: "catalog",
+                    dbName: process.env.MONGODB_DATABASE_NAME,
                 })
 
             return mongoClient
