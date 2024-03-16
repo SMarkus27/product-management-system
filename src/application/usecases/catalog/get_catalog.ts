@@ -1,7 +1,6 @@
 import {ProductRepository} from "@root/src/infra/repository/product";
 import {CategoryRepository} from "@root/src/infra/repository/category";
 import {Response} from "express";
-import {log} from "testcontainers";
 
 export class GetCatalog {
 
@@ -16,24 +15,23 @@ export class GetCatalog {
         const ownerIds = getAllProducts.map(item => item.owner_id);
 
         const catalog = getAllCategories.map(category => {
-                return {
-                    owner: ownerIds[0],
-                    catalog: {
-                            category_title: category.title,
-                            category_description: category.description,
-                            items: getAllProducts.map(product => {
-                                if (product.category === category.title) {
-                                    return {
-                                        title: product.title,
-                                        description: product.description,
-                                        price: product.price
-                                    }
-                                }
-
-                            }).filter(value => value !== undefined)
-                    }
+            return {
+                owner: ownerIds[0],
+                catalog: {
+                    category_title: category.title,
+                    category_description: category.description,
+                    items: getAllProducts
+                        .filter(product => product.category === category.title)
+                        .map(product => {
+                            return {
+                                title: product.title,
+                                description: product.description,
+                                price: product.price
+                            }
+                    })
                 }
-            })
+            }
+        })
 
         return response.status(200).json({
             success: true,

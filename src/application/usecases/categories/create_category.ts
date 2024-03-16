@@ -1,5 +1,3 @@
-import {v4 as uuid4} from "uuid";
-
 import {CategoryRepository} from "@root/src/infra/repository/category";
 import {CategoryType} from "@domain/entities/types/category";
 import {Response} from "express";
