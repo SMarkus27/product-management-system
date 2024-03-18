@@ -23,14 +23,12 @@ describe("Product Repository test", () => {
             price: 20.55,
             category: "new categories",
             owner_id: "123",
-            product_id: "456"
         };
 
         const productRepository = new ProductRepository();
         await productRepository.create(product);
-        const findProduct = await productRepository.getOne(product.product_id);
+        const findProduct = await productRepository.getOne({title: product.title});
         expect(findProduct).toHaveProperty("_id");
-        await productRepository.delete(findProduct.product_id);
 
     });
 
@@ -41,23 +39,20 @@ describe("Product Repository test", () => {
             price: 20.55,
             category: "new categories",
             owner_id: "123",
-            product_id: "456"
         };
 
         const newProduct = {
-            title: "products 1",
+            title: "products 2",
             description: "new products",
             price: 20.55,
             category: "new categories 2",
             owner_id: "123",
-            product_id: "456"
         };
         const productRepository = new ProductRepository();
         await productRepository.create(product);
-        const updateProduct = await productRepository.update(product.product_id, newProduct);
+        const productResult = await productRepository.getOne({title: product.title})
+        const updateProduct = await productRepository.update(productResult["_id"], newProduct);
         expect(updateProduct.modifiedCount).toEqual(1);
-        const findProduct = await productRepository.getOne(product.product_id);
-        await productRepository.delete(findProduct.product_id);
 
 
     });
@@ -70,7 +65,6 @@ describe("Product Repository test", () => {
             price: 20.55,
             category: "new categories",
             owner_id: "123",
-            product_id: "456"
         };
 
         const product2 = {
@@ -79,17 +73,16 @@ describe("Product Repository test", () => {
             price: 30.55,
             category: "new categories 2",
             owner_id: "123",
-            product_id: "789"
         };
         const productRepository = new ProductRepository();
         await productRepository.create(product1);
         await productRepository.create(product2);
 
-        const allProduct = await productRepository.getAll(product1.owner_id);
+        const allProduct = await productRepository.getAll();
         expect(allProduct.length > 1).toEqual(true);
 
         allProduct.map(async (item) => {
-            await productRepository.delete(item.product_id);
+            await productRepository.delete(item["_id"]);
 
         })
 

@@ -5,7 +5,8 @@
   "repository": "git@github.com:SMarkus27/product-management-system.git",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon"
+    "start": "nodemon",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/jest": "^29.5.11",

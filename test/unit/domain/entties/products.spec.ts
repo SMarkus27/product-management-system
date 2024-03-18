@@ -10,7 +10,6 @@ describe("Product Entity tests", () => {
             price: 20.55,
             category: "new categories",
             owner_id: "123",
-            product_id: "456"
         };
 
         const newProduct = await Products.create(product);
@@ -19,7 +18,6 @@ describe("Product Entity tests", () => {
         expect(newProduct.price).toEqual(20.55);
         expect(newProduct.category).toEqual("new categories");
         expect(newProduct.owner_id).toEqual("123");
-        expect(newProduct.product_id).toEqual("456");
 
     });
 
@@ -30,7 +28,6 @@ describe("Product Entity tests", () => {
             price: 20.55,
             category: "new categories",
             owner_id: "123",
-            product_id: "456"
 
         };
 
@@ -43,7 +40,6 @@ describe("Product Entity tests", () => {
             price: 20.55,
             category: "new categories",
             owner_id: "123",
-            product_id: "456"
 
         };
 
@@ -57,7 +53,6 @@ describe("Product Entity tests", () => {
             price: -1,
             category: "new categories",
             owner_id: "123",
-            product_id: "456"
 
         };
 
